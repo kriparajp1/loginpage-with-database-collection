@@ -1,0 +1,36 @@
+<%- include('header') %>
+  <div class="circle signup__animation__circle__3"></div>
+    <div class="circle signup__animation__circle__4"></div>
+    <div class="form signup">
+      <div class="header">Sign up</div>
+
+      <form method="post" >
+      <div class="group input__group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Name" required>
+      </div>
+        <div class="group input__group">
+          <label for="name">Email</label>
+          <input type="email" id="email" name="email" placeholder="Email" required>
+        </div>
+        <div class="group input__group">
+          <label for="name">Password</label>
+          <input type="password" id="password" name="password" placeholder="Password" required>
+        </div>
+      <div class="group button__group">
+        <button class="signup-btn"><span>Sign up</span>
+          <img src="https://i.cloudup.com/2ZAX3hVsBE-3000x3000.png" height="30" width="30">
+        </button>
+      </div>
+      <div class="form-link login__link">
+        <span>Already have an account?</span>
+        <a href="/login"  class="link login-link">Log in now</a>
+      </div>
+      <div class="form-link login__link">
+        <span>Admin Login</span>
+        <a href="/admin/login"  class="link login-link">Log in now</a>
+      </div>
+      </form>
+    </div>
+  </div>
+<%- include('footer') %>

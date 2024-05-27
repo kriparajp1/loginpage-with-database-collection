@@ -1,0 +1,95 @@
+<%- include('header') %>
+  <div class="circle signup__animation__circle__3"></div>
+    <div class="circle signup__animation__circle__4"></div>
+    <div class="form signup">
+      <div class="header">Registration Form</div>
+
+      <form onsubmit="submitForm(event)">
+      <div class="group input__group">
+        <label for="username">UserName</label>
+        <input type="text" id="username" name="name" placeholder="new username" required>
+      </div>
+        <div class="group input__group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="new Email" required>
+        </div>
+        <div class="group input__group">
+          <label for="name">Password</label>
+          <input type="password" id="password" name="password" placeholder="new Password" required>
+        </div>
+      <div class="group button__group">
+        <button type="submit" class="signup-btn"><span>Register</span>
+          <img src="https://i.cloudup.com/2ZAX3hVsBE-3000x3000.png" height="30" width="30">
+        </button>
+      </div>
+      </form>
+    </div>
+  </div>
+  <script>
+     let emailUser = document.getElementById("email");
+      let userName = document.getElementById("username")
+      let passwordUser = document.getElementById("password");
+
+      if ( window.history.replaceState ) {
+    window.history.replaceState( null, null, window.location.href );
+    }
+
+      let errorId  = document.getElementById("error");
+
+      function showError(message) {
+
+    const errorDiv = document.createElement("div");
+    errorDiv.textContent = message;
+    errorDiv.classList.add("error-message");
+    errorId.appendChild(errorDiv);
+
+
+    setTimeout(() => {
+    errorId .removeChild(errorDiv);
+    }, 5000);
+    }
+
+      async function submitForm(e){
+          e.preventDefault();
+
+    const data = {
+    email: emailUser.value,
+    name : userName.value,
+    password: passwordUser.value
+    };
+
+
+    const response = await fetch("/admin/createuser", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+    });
+    console.log(data)
+
+    if (response.ok) {
+    console.log("ok")
+    const responseData = await response.json();
+    console.log("Response Data:", responseData);
+
+    // window.location.href("http://localhost:3001/home")
+    window.location.href = "/admin/dashboard";
+    } else {
+
+    const errorMessage = await response.json();
+    console.log(errorMessage)
+    showError(errorMessage.mes)
+
+    }
+
+      }
+
+
+
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<%- include('footer') %>

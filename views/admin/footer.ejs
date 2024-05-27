@@ -1,0 +1,26 @@
+<div class="footer-text">
+    <footer>
+    &copy;
+    <code>
+        <h3>Project from <span>kriparaj P</span></h3>
+    </code>
+</footer>
+</div>
+
+
+<script>
+
+    const forms = document.querySelector(".forms"),
+			links = document.querySelectorAll(".link");
+
+
+
+links.forEach(link => {
+	link.addEventListener("click", e => {
+		e.preventDefault();
+		forms.classList.toggle("show-signup");
+	})
+})
+</script>
+</body>
+</html>

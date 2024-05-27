@@ -1,0 +1,32 @@
+<%- include('header') %>
+
+
+<div class="form login">
+    <div class="header">Admin Login</div>
+    
+    <form action="/admin/login" method="post">
+    <div class="group input__group">
+        <label for="email"> Username</label>
+        <input type="text" id="name" placeholder="Username" name="username" required>
+    </div>
+    <div class="group input__group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Password" name="password" required>
+    </div>
+    <div class="alert-text">
+        <span class="help-text">At least 8 characters</span>
+    </div>
+
+    <div class="group button__group">
+        <button type="submit" class="login-btn"><span>Log in</span>
+            <img src="https://i.cloudup.com/2ZAX3hVsBE-3000x3000.png" height="30" width="30">
+        </button>
+    </div>
+    <div class="form-link signup__link">
+        <span>Go back to User Login</span>
+        <a href="/"  class="link signup-link">user Login</a>
+    </div>
+    </form>
+</div>
+       
+<%- include('footer') %>

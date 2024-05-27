@@ -1,0 +1,25 @@
+<%- include('header') %>
+
+
+<div class="form login">
+    <div class="header">Edit User</div>
+
+    <form action="/admin/update/<%= user.id%>" method="POST">
+    <div class="group input__group">
+        <label for="name"> Username</label>
+        <input type="text" name="name" id="name" value="<%= user.name%>" required>
+    </div>
+    <div class="group input__group">
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" value="<%= user.email%>">
+    </div>
+
+    <div class="group button__group">
+        <button type="submit" class="login-btn"><span>Save Changes</span>
+            <img src="https://i.cloudup.com/2ZAX3hVsBE-3000x3000.png" height="30" width="30">
+        </button>
+    </div>
+    </form>
+</div>
+
+<%- include('footer') %>

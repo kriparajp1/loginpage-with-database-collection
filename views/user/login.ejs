@@ -1,0 +1,101 @@
+<%- include('header') %>
+
+
+<div class="form login">
+    <div class="header">User Login</div>
+
+    <form onsubmit="submitForm(event)">
+    <div class="group input__group">
+        <label for="email"> Username</label>
+        <input type="text" id="email" placeholder="Username" name="email" required>
+    </div>
+    <div class="group input__group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Password" required>
+    </div>
+    <div class="alert-text">
+        <span class="help-text">At least 8 characters</span>
+    </div>
+    <div class="form-link forgot">
+        <a href="#" target="_blank" class="link forgot__pass">Forgot password?</a>
+    </div>
+    <div class="group button__group">
+        <button type="submit" class="login-btn"><span>Log in</span>
+            <img src="https://i.cloudup.com/2ZAX3hVsBE-3000x3000.png" height="30" width="30">
+        </button>
+    </div>
+    <div class="form-link signup__link">
+        <span>Don't have an account?</span>
+        <a href="/"  class="link signup-link">Sign up now</a>
+    </div>
+    </form>
+
+
+</div>
+  <script>
+    let emailUser = document.getElementById("email");
+    let passwordUser = document.getElementById("password");
+
+    if ( window.history.replaceState ) {
+    window.history.replaceState( null, null, window.location.href );
+    }
+
+    let errorId  = document.getElementById("error");
+
+    function showError(message) {
+    // Create a new div element
+    const errorDiv = document.createElement("div");
+
+    // Set the error message
+    errorDiv.textContent = message;
+
+    // Add a class or styles if needed
+    errorDiv.classList.add("error-message");
+
+    // Append the new div to the existing div with id "error"
+
+    errorId .appendChild(errorDiv);
+
+    // After 5 seconds, remove the child div
+    setTimeout(() => {
+    errorId .removeChild(errorDiv);
+    }, 5000);
+    }
+
+    async function submitForm(e){
+        e.preventDefault();
+
+    const data = {
+    email: emailUser.value,
+    password: passwordUser.value
+    };
+
+
+    const response = await fetch("/login", {
+    method: "POST",
+    headers: {
+    "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+    });
+    console.log(data)
+
+    if (response.ok) {
+    console.log("ok")
+    const responseData = await response.json();
+    console.log("Response Data:", responseData);
+
+    // window.location.href("http://localhost:3001/home")
+    window.location.href = "/home";
+    } else {
+
+    const errorMessage = await response.json();
+    console.log(errorMessage)
+    showError(errorMessage.mes)
+
+    }
+
+    }
+  </script>
+
+        <%- include('footer') %>

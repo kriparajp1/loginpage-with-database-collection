@@ -1,0 +1,23 @@
+
+<%- include('header') %>
+    <div class="form" id="login" >
+        
+            <div class="group input__group">
+                <h2 class="header">
+                    HOME PAGE 
+                </h2>
+            </div> 
+            <div class="group input__group">
+                 <a href="/signout"><button type="submit" class="btn btn-outline-danger">Signout</button></a>    
+                 </div>
+      
+        
+    </div>
+        
+        <script>
+            if ( window.history.replaceState ) {
+          window.history.replaceState( null, null, window.location.href );
+        }
+          </script>
+
+        <%- include('footer') %>

@@ -1,0 +1,777 @@
+/* ======================================================================== */ 
+
+ /*                      NOT RELATED TO THE TTUTORIAL                        */
+
+/* ======================================================================== */
+
+*{
+	
+	
+	text-decoration: none;
+
+}
+
+
+
+@import "compass/css3";
+
+$body-bg: #c1bdba;
+$form-bg: #13232f;
+$white: #ffffff;
+
+$main: #1ab188;
+$main-light: lighten($main,5%);
+$main-dark: darken($main,5%);
+
+$gray-light: #a0b3b0;
+$gray: #ddd;
+
+$thin: 300;
+$normal: 400;
+$bold: 600;
+$br: 4px;
+
+
+
+
+*,
+*::before,
+*::after {
+    margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+	outline: none;
+	list-style: none;
+}
+
+
+:root {
+  --step--2: clamp(0.69rem, calc(0.58rem + 0.60vw), 1.00rem);
+  --step--1: clamp(0.83rem, calc(0.67rem + 0.81vw), 1.25rem);
+  --step-0: clamp(1.00rem, calc(0.78rem + 1.10vw), 1.56rem);
+  --step-1: clamp(1.20rem, calc(0.91rem + 1.47vw), 1.95rem);
+  --step-2: clamp(1.44rem, calc(1.05rem + 1.95vw), 2.44rem);
+  --step-3: clamp(1.73rem, calc(1.21rem + 2.58vw), 3.05rem);
+  --step-4: clamp(2.07rem, calc(1.39rem + 3.40vw), 3.82rem);
+  --step-5: clamp(2.49rem, calc(1.60rem + 4.45vw), 4.77rem);
+	
+	/* Font style */
+	
+	--ff-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	
+	/* Color style */
+	
+	/*
+	--color-primary:#c51350;
+	--color-secondary:#ff9a3c;
+	--color-body:#333;
+	--color-bg: #006600;
+	--color-primary-dark:#007f67;
+	--color-error:#cc3333;
+	--color-success:#4bb544;
+	--color-link:#cdcdcc;
+	--color-border:darkgrey;
+	--bs:#ffa857;
+	*/
+	
+	--color-primary:#e50914;
+	--color-primary-dark:#007f67;
+	--color-secondary:#ff9a3c;
+	--color-error:#cc3333;
+	--color-success:#4bb544;
+	--color-link:#cdcdcc;
+	--color-background:#e2e2e2;
+	--color-input-background:#774181;
+	--color-border:#a4a3a3;
+	--bs:#ffa857;
+	--color-dark-purple:#5f1854;
+	
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  height: 100%;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: var(--ff-primary);
+}
+
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+ text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+
+
+
+/* ======================================================================== */ 
+
+ /*                      RELATED TO THE TTUTORIAL                        */
+
+/* ======================================================================== */
+
+
+html, body {
+  height:100%;
+}
+
+
+.container {
+	position: relative;
+	widows: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #41295a;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #2F0743, #41295a);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #2F0743, #41295a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	overflow: hidden;
+	column-gap: 3rem;
+}
+
+.circle {
+	position: absolute;
+	width: 8rem;
+	height: 8rem;
+	border-radius: 50%;
+	z-index: 1;
+	/*
+	top: 120px;
+	right: 540px;
+	*/
+	top: 10px;
+	right: 530px;
+	animation-duration:2.8s;
+	animation-iteration-count: infinite;
+	animation-timing-function:linear;
+}
+
+.circle:nth-child(2) {
+	top: 580px;
+	left: 530px;
+}
+
+
+/*---------------- Login Circle ----------------*/
+
+.circle.login__animation__circle__1 {
+	animation-name: login__circle1;
+}
+
+.circle.login__animation__circle__2 {
+	animation-name: login__circle2;
+}
+
+@keyframes login__circle1 {
+	from {
+		background: #fc4a1a;  /* fallback for old browsers */
+background: -webkit-linear-gradient(45deg, #f7b733, #fc4a1a);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(45deg, #f7b733, #fc4a1a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+	}
+	
+	to {
+		background: #fc4a1a;  /* fallback for old browsers */
+background: -webkit-linear-gradient(45deg, #f7b733, #fc4a1a);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(45deg, #f7b733, #fc4a1a);/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+	}
+}
+
+@keyframes login__circle2 {
+	from {
+		background: #AA076B;  /* fallback for old browsers */
+background: -webkit-linear-gradient(45deg, #61045F, #AA076B);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(45deg, #61045F, #AA076B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+	}
+	
+	to {
+		background: #AA076B;  /* fallback for old browsers */
+background: -webkit-linear-gradient(45deg, #61045F, #AA076B);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(45deg, #61045F, #AA076B);
+
+	}
+}
+
+/*---------------- The end of Login Circle ----------------*/
+
+
+
+.form {
+	position: absolute;
+	z-index: 2;
+	width: 100%;
+	max-width: 20rem;
+	-webkit-backdrop-filter: blur(15px) saturate(180%);
+	backdrop-filter: blur(15px) saturate(180%);
+	background-color: rgb(255 255 255 / 11%);
+	padding: 3.3em 1.9em;
+	border-radius: .4em;
+	transition: all .3s ease-in-out;
+}
+
+/* .form.signup {
+	opacity: 100;
+	pointer-events: none;
+} */
+
+/* .forms.show-signup .form.signup {
+	opacity: 1;
+	pointer-events: auto;
+} */
+
+/* .forms.show-signup .form.login {
+	opacity: 0;
+	pointer-events: none;
+} */
+
+form {
+	margin-top: -1.225em;
+}
+
+.header {
+	text-align: center;
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 500;
+	font-size: var(--step-0);
+}
+
+.form .group {
+	position: relative;
+	width: 100%;
+	height: 45px;
+	margin-bottom: 1.5em;
+}
+
+.form .group input,
+.form .group button{
+	width: 100%;
+	height: 100%;
+	outline: none;
+	border: none;
+	border-radius: .3em;
+}
+
+.form label {
+	font-size: var(--step--1);
+	color: #fff;
+}
+
+.form .input__group {
+	margin: 2.9em 0;
+}
+
+.form input {
+	margin-top: .3em;
+	-webkit-backdrop-filter: blur(10px) saturate(180%);
+	backdrop-filter: blur(15px) saturate(180%);
+	background-color: rgb(255 255 255 / 11%);
+	padding: 6px 10px;
+	color: #fff;
+	border: 2px solid lightgray;
+}
+
+.form input::placeholder {
+	color: #fff;
+	opacity: 0.7;
+}
+
+.alert-text {
+	margin-top: -.5em;
+}
+
+.help-text {
+	position: absolute;
+	left: 2rem;
+	color: #fff;
+	font-weight: 200;
+	display: inline-block;
+}
+
+.form-link {
+	margin-top: 2rem;
+	text-align: center;
+}
+
+.form-link.forgot {
+	margin-top: 5em;
+}
+
+.form-link span {
+	font-weight: 400;
+	color: #fff;
+}
+
+.form-link.login__link {
+	margin-top: 4.7rem;
+	margin-bottom: -2rem;
+}
+
+.form-link.signup__link {
+	margin-top: 4.7rem;
+}
+
+
+.form-link .link {
+	color: #FFF60A;
+	font-weight: 300;
+}
+
+.form-link .link:hover {
+	text-decoration: underline;
+}
+
+/* -----------------Button style ----------------- */
+
+.group button {
+	position: relative;
+	background: #FFB75E;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #ED8F03, #FFB75E);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #ED8F03, #FFB75E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+	margin-top: 2.5em;
+	color: fff;
+	font-weight: 500;
+	padding: 10px 0;
+	cursor: pointer;
+	text-align: center;
+	transition:  all .3s ease;
+	z-index: 1;
+}
+
+.group button:hover {
+	transition: .6s all ease;
+	transform: scale(0.95);
+box-shadow: 0px 0px 5px rgba(253, 95, 0, 0.77),
+	0px 0px 20px rgba(253, 95, 0, 0.77),
+	0px 0px 45px rgba(253, 95, 0, 0.77),
+	0px 0px 180px rgba(253, 95, 0, 0.77);
+}
+
+/*
+.group button::before {
+	position: absolute;
+	content: '';
+	z-index: -1;
+	left: 0;
+	bottom: 0;
+	height: 0;
+	width: 100%;
+	background-color: #fd5f00;
+	transition: .6s all ease;
+	border-radius: .3em;
+}
+
+.group button:hover::before {
+	height: 100%;
+}
+*/
+
+
+.group button > span {
+	color: #57385c;
+}
+
+img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0
+}
+
+.group button:focus {
+	-webkit-animation: extend 1s ease-in-out;
+    -ms-animation: extend 1s ease-in-out;
+	animation: extend 1s ease-in-out;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+
+.group button:focus > span {
+	-webkit-animation: disappear 1s ease-in-out;
+    -ms-animation: disappear 1s ease-in-out;
+	animation: disappear 1s ease-in-out;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+
+.group button:focus > img {
+	-webkit-animation: appear 1s ease-in-out;
+    -ms-animation: appear 1s ease-in-out;
+	animation: appear 1s ease-in-out;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+
+
+@-webkit-keyframes {
+	
+}
+@-webkit-keyframes extend {
+	0% {
+		width: 320px;
+		height: 45px;
+		border-radius: 100rem;
+		top: 40px;
+		bottom: 40px;
+		margin-top: 0;
+		margin-bottom: 0;
+		
+	}
+	10% {
+		width: 320px;
+		height: 45px;
+		top: 40px;
+		bottom: 40px;
+		margin-top: 0;
+		margin-bottom: 0;
+		
+	}
+	20% {
+		width: 320px;
+		height: 45px;
+		background: #6fb07f;
+		
+		top: 40px;
+		bottom: 0;
+		left: 0;
+		margin: 0;
+		
+	}
+	100% {
+		width: 80px;
+		height: 80px;
+		border-radius: 100rem;
+		background: #6fb07f;
+	
+		margin-left: 110px;
+		margin-top: 30px;
+		top: 0;
+		left: 0;
+		
+	    box-shadow: 0px 0px 5px rgba(111, 176, 127, 0.77),
+	0px 0px 20px rgba(111, 176, 127, 0.77),
+	0px 0px 45px rgba(111, 176, 127, 0.77),
+	0px 0px 180px rgba(111, 176, 127, 0.77);
+		
+	}
+	
+}
+
+@keyframes extend {
+	0% {
+		width: 320px;
+		height: 45px;
+		border-radius: 100rem;
+		top: 40px;
+		bottom: 40px;
+		margin-top: 0;
+		margin-bottom: 0;
+		
+	}
+	10% {
+		width: 320px;
+		height: 45px;
+		top: 40px;
+		bottom: 40px;
+		margin-top: 0;
+		margin-bottom: 0;
+		
+	}
+	20% {
+		width: 320px;
+		height: 45px;
+		background: #6fb07f;
+		
+		top: 40px;
+		bottom: 0;
+		left: 0;
+		margin: 0;
+		
+	}
+	100% {
+		width: 80px;
+		height: 80px;
+		border-radius: 100rem;
+		background: #6fb07f;
+	
+		margin-left: 120px;
+		margin-top: 30px;
+		top: 0;
+		left: 0;
+		
+	    box-shadow: 0px 0px 5px rgba(111, 176, 127, 0.77),
+	0px 0px 20px rgba(111, 176, 127, 0.77),
+	0px 0px 45px rgba(111, 176, 127, 0.77),
+	0px 0px 180px rgba(111, 176, 127, 0.77);
+		
+	}
+	
+}
+
+
+@-webkit-keyframes {
+	
+}
+@-webkit-keyframes disappear {
+	0% {
+		opacity: 1;
+	}
+	
+	20% {
+		color: #fff;
+	}
+	
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes disappear {
+	0% {
+		opacity: 1;
+	}
+	
+	20% {
+		color: #fff;
+	}
+	
+	100% {
+		opacity: 0;
+	}
+}
+
+
+@-webkit-keyframes {
+	
+}
+@-webkit-keyframes appear {
+	0% {
+		opacity: 0;
+	}
+	
+	70% {
+		opacity: 1;
+	}
+	
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes appear {
+	0% {
+		opacity: 0;
+	}
+	
+	70% {
+		opacity: 1;
+	}
+	
+	100% {
+		opacity: 1;
+	}
+}
+
+/* -----------------The end of Button style ----------------- */
+
+
+
+
+
+/* -----------------The start of Validation* ----------------- */
+
+
+.form input:focus,
+.form input:not(:placeholder-shown) {
+	background-color: var(--color-input-background);
+	border-color: var(--color-border);
+}
+
+.form input:focus,
+.form input:focus:placeholder-shown {
+	box-shadow: 0 0 0 3px var(--color-dark-purple);
+}
+
+.form input:focus:valid {
+	box-shadow: 0 0 0 3px var(--color-success);
+}
+
+.form input:valid:not(:placeholder-shown) {
+	border-color: var(--color-success);
+}
+
+.form input:focus:invalid {
+	box-shadow: 0 0 0 3px var(--color-error);
+}
+
+.form input:invalid:not(:placeholder-shown) {
+	border-color: var(--color-error);
+}
+
+/* -----------------The end of Validation* ----------------- */
+
+
+.line {
+	position: relative;
+	width: 100%;
+	height: 1px;
+	margin: 2.5rem 0 2rem 0;
+	background-color: #FFF60A;
+}
+
+.line::before {
+	content: 'Or';
+	position: absolute;
+	background: #6fb07f;
+	color: #fff;
+	padding: 0 1em;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: .5rem;
+}
+
+
+.social__media__wrapper {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	margin-bottom: -.8em;
+}
+
+a.social {
+	position: relative;
+	width: 50px;
+	height: 50px;
+	display: inline-block;
+	border-radius: 50%;
+	margin: 0 1em;
+	color: #FFF60A;
+	box-shadow: 0 2px 18px rgba(0,0,0,0.125);
+	-webkit-backdrop-filter: blur(15px) saturate(180%);
+	backdrop-filter: blur(15px) saturate(180%);
+	background-color: rgb(255 255 255 / 11%);
+	overflow: hidden;
+	cursor: pointer;
+}
+
+@keyframes social {
+	0% {
+		left: -110%;
+		top: 90%;
+	}
+	
+	50% {
+		left: 10%;
+		top: -30%;
+	}
+	
+	100% {
+		top: -10%;
+		left: -10%;
+	}
+}
+
+
+.footer-text {
+	position: relative;
+	bottom: 1em;
+}
+
+footer {
+	display: flex;
+	margin-top: 47rem;
+	margin-left: 45rem;
+	
+	font-size: var(--step--2);
+	transform: translate(150px, -3px);
+}
+
+footer h3 {
+	margin-left: 1.2em;
+	color: #6fb07f;
+}
+
+footer span {
+	color: #f5af19;
+	color: 
+	
+}
+
+footer span {
+	color: #f5af19;
+	
+}
